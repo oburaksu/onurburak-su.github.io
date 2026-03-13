@@ -1,10 +1,124 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>İletişim - Onur Burak Su</title>
+    <style>
+        /* İletişim Formu */
+        .contact-container {
+            width: 600px;
+            max-width: 90%;
+            margin: 40px auto;
+            padding: 30px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            background-color: #e3f2fd;
+        }
+
+        .contact-container h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 22px;
+            color: #333;
+            font-family: Arial, sans-serif;
+        }
+
+        .contact-container label {
+            display: block;
+            font-weight: bold;
+            font-size: 14px;
+            color: #4b5563;
+            margin-bottom: 8px;
+            font-family: Arial, sans-serif;
+        }
+
+        /* 4. Madde İsteri - Çoklu Seçici */
+        .contact-container input,
+        .contact-container select,
+        .contact-container textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            font-size: 14px;
+            font-family: Arial, sans-serif;
+            box-sizing: border-box;
+        }
+
+        .contact-container input[type="file"] {
+            border: none;
+            padding: 0;
+        }
+
+        /* Checkbox ve Radiolar için Düzeltmeler */
+        .contact-container input[type="radio"],
+        .contact-container input[type="checkbox"] {
+            width: auto;
+            padding: 0;
+            margin-bottom: 0;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .contact-container .grouped-box {
+            background-color: #f9fafb;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            border: 1px solid #f3f4f6;
+        }
+
+        .contact-container .grouped-box label {
+            display: flex;
+            align-items: center;
+            font-weight: normal;
+        }
+
+        .contact-container .grouped-box label:not(:last-child) {
+            margin-bottom: 8px;
+        }
+
+        .contact-container textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        /* 5. Madde İsterleri - Butonlar */
+        .contact-container .button-group {
+            display: flex;
+            gap: 15px;
+        }
+
+        .contact-container button {
+            flex: 1;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 4px;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: opacity 0.3s;
+            font-family: Arial, sans-serif;
+        }
+
+        .contact-container button[type="submit"] {
+            background-color: #007bff;
+        }
+
+        .contact-container button[type="reset"] {
+            background-color: #dc3545;
+        }
+
+        .contact-container button:hover {
+            opacity: 0.9;
+        }
+    </style>
 </head>
+
 <body>
 
     <header>
@@ -28,21 +142,81 @@
                 <li>📧 <strong>E-posta:</strong> <a href="mailto:ogrenci@example.com">ogrenci@example.com</a></li>
                 <li>📱 <strong>Telefon:</strong> +90 555 111 22 33</li>
                 <li>💻 <strong>GitHub:</strong> <a href="https://github.com/" target="_blank">GitHub Profilim</a></li>
-                <li>🔗 <strong>LinkedIn:</strong> <a href="https://linkedin.com/" target="_blank">LinkedIn Profilim</a></li>
+                <li>🔗 <strong>LinkedIn:</strong> <a href="https://linkedin.com/" target="_blank">LinkedIn Profilim</a>
+                </li>
             </ul>
         </section>
 
         <section>
             <h2>Sık Sorulan Sorular</h2>
-            
+
             <h3>Mesajlara ne kadar sürede dönüş yapıyorsunuz?</h3>
-            <p>Genellikle 24 saat içinde e-posta yoluyla dönüş yapıyorum. Acil durumlarda LinkedIn üzerinden de ulaşabilirsiniz.</p>
+            <p>Genellikle 24 saat içinde e-posta yoluyla dönüş yapıyorum. Acil durumlarda LinkedIn üzerinden de
+                ulaşabilirsiniz.</p>
 
             <h3>Projelerde iş birliğine açık mısınız?</h3>
-            <p>Evet, özellikle eğitim amaçlı açık kaynak projelerinde, donanım (mikrodenetleyici) geliştirme ve C/Assembly tabanlı sistem programlama çalışmalarında iş birliklerine açığım.</p>
-            
+            <p>Evet, özellikle eğitim amaçlı açık kaynak projelerinde, donanım (mikrodenetleyici) geliştirme ve
+                C/Assembly tabanlı sistem programlama çalışmalarında iş birliklerine açığım.</p>
+
             <br>
             <p><a href="index.html">&larr; Ana sayfaya geri dön</a></p>
+        </section>
+
+        <section>
+            <!-- İletişim Formu Başlangıcı -->
+            <div class="contact-container">
+                <h2>Detaylı İletişim Formu</h2>
+                <form action="#" method="POST">
+
+                    <label for="ad-soyad">Ad Soyad:</label>
+                    <input type="text" id="ad-soyad" name="ad-soyad" placeholder="Örn: Onur Burak Su" required>
+
+                    <label for="email">E-posta Adresi:</label>
+                    <input type="email" id="email" name="email" placeholder="ornek@gmail.com" required>
+
+                    <label for="password">Başvuru Takip Şifresi:</label>
+                    <input type="password" id="password" name="password" placeholder="Şifrenizi girin" required>
+
+                    <label>İletişim Tercihi:</label>
+                    <div class="grouped-box">
+                        <label><input type="radio" name="contact-pref" value="email" checked> Bana e-posta ile
+                            ulaşın</label>
+                        <label><input type="radio" name="contact-pref" value="phone"> Bana telefonla ulaşın</label>
+                    </div>
+
+                    <label>İlgi Alanları / Yetenekler:</label>
+                    <div class="grouped-box">
+                        <label><input type="checkbox" name="skills" value="Algoritma Analizi ve Optimizasyon"> Algoritma
+                            Analizi ve Optimizasyon</label>
+                        <label><input type="checkbox" name="skills" value="İşletim Sistemleri ve Bellek Yönetimi">
+                            İşletim Sistemleri ve Bellek Yönetimi</label>
+                        <label><input type="checkbox" name="skills" value="Finansal Piyasalar ve Teknik Analiz">
+                            Finansal Piyasalar ve Teknik Analiz</label>
+                    </div>
+
+                    <label for="konu">Konu:</label>
+                    <select id="konu" name="konu" required>
+                        <option value="" disabled selected>Lütfen bir konu seçin...</option>
+                        <option value="iş-teklifi">İş Teklifi</option>
+                        <option value="soru">Soru</option>
+                        <option value="geri-bildirim">Geri Bildirim</option>
+                    </select>
+
+                    <label for="dosya">Özgeçmiş (CV) veya Fotoğraf Yükle:</label>
+                    <input type="file" id="dosya" name="dosya">
+
+                    <label for="mesaj">Mesajınız:</label>
+                    <textarea id="mesaj" name="mesaj" placeholder="Detaylı mesajınızı buraya yazabilirsiniz..."
+                        required></textarea>
+
+                    <div class="button-group">
+                        <button type="submit">Gönder</button>
+                        <button type="reset">Temizle</button>
+                    </div>
+
+                </form>
+            </div>
+            <!-- İletişim Formu Sonu -->
         </section>
 
     </main>
