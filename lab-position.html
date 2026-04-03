@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAB: CSS Position</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f3f4f6; /* Mevcut proje arka planı ile uyumlu */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            /* Scroll oluşumunu görmek isterseniz diye fazladan margin verebiliriz fakat bu çalışma centerlanmış kalsın */
+        }
+
+        .header-area {
+            width: 100%;
+            max-width: 900px;
+            margin-bottom: 30px;
+        }
+
+        .btn-back {
+            display: inline-block;
+            background: linear-gradient(135deg, #3b82f6, #6366f1);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-back:hover {
+            background: linear-gradient(135deg, #2563eb, #4f46e5);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+        }
+
+        .btn-back:active {
+            transform: translateY(0);
+        }
+
+        /* Zorunlu Kural: Kapsayıcıda position: relative kullanılmalı */
+        .card-container {
+            position: relative;
+            width: 100%;
+            max-width: 850px;
+            background: linear-gradient(135deg, #eef2f6, #c9e0f2); /* Mevcut projedeki header ve sidebar renkleriyle ahenkli */
+            border-radius: 12px;
+            padding: 70px 50px;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+            overflow: hidden; /* Dışarı taşan tasarım öğelerini kessin */
+        }
+
+        /* Z-index ve Absolute dekorasyon öğesi */
+        .circle-bg {
+            position: absolute;
+            bottom: -60px;
+            right: -20px;
+            width: 250px;
+            height: 250px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            z-index: -1; /* Z-index kuralı - Metinlerin arkasında kalacak */
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 2; /* Z-index kuralı - Dekorasyonun üstünde yer alacak */
+            pointer-events: none; /* Metin seçimi için değil de butonların tıklanmasına engel olmasın diye ancak metinler var. İhtiyaç yok gerçi. */
+        }
+
+        .card-content h1 {
+            font-size: 32px;
+            color: #333333;
+            margin-bottom: 20px;
+            margin-top: 15px;
+        }
+
+        .card-content p {
+            font-size: 17px;
+            color: #4b5563;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            max-width: 90%;
+            text-align: justify;
+        }
+
+        /* Zorunlu Kural: İçinde en az 3 farklı öğe position: absolute ile konumlandırılmalı */
+        .badge {
+            position: absolute;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 13px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        /* Ücretsiz Etiketi (Absolute - Sol Üst) */
+        .badge-free {
+            top: 80px;
+            left: 35px;
+            background-color: #fef6e4; /* Content-col arka planından */
+            color: #d97706; /* Turuncu-sarı text */
+            border: 1px solid #f3e5b6;
+            z-index: 10; /* Başlığın üzerine binmesi için */
+        }
+
+        /* Tarih Etiketi (Absolute - Sağ Üst) */
+        .badge-date {
+            top: 25px;
+            right: 25px;
+            background-color: #dcfce7;
+            color: #166534;
+            border: 1px solid #bbf7d0;
+        }
+
+        /* Konum Etiketi (Absolute - Sol Alt) */
+        .badge-location {
+            bottom: 25px;
+            left: 25px;
+            background-color: #ffffff;
+            color: #4b5563;
+            border: 1px solid #d1d5db;
+        }
+        
+        /* Kayıt Etiketi (Absolute - Sağ Alt) */
+        .badge-register {
+            bottom: 25px;
+            right: 25px;
+            background-color: #fce7f3;
+            color: #9d174d;
+            border: 1px solid #fbcfe8;
+        }
+
+        /* Kullanıcı İsteği: "ücretsiz 24 nisan butonlarına geldiğinde ise aşağı yukarı hareket etmeli(animasyon ekleme)" */
+        @keyframes bounceVertical {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-6px);
+            }
+        }
+
+        .badge-free:hover, .badge-date:hover {
+            animation: bounceVertical 0.6s ease-in-out infinite;
+        }
+
+        .badge-register:hover {
+            transform: scale(1.05); /* Bunlar da ufak büyüsün standart farklı CSS etkileşimi olsun */
+        }
+
+        .page-footer {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .page-footer p {
+            font-size: 13px;
+            color: #6b7280;
+        }
+
+        /* Zorunlu Kural: Scroll sırasında sabit kalan en az 1 fixed öğe */
+        .helper-element {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #8da4d0, #6366f1);
+            color: #ffffff;
+            padding: 14px 22px;
+            border-radius: 50px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+            transition: all 0.3s ease; /* Hover etkileşimi geçişleri için */
+            z-index: 1000; /* Her şeyin üstünde görünmesi için */
+        }
+
+        /* Kullanıcı İsteği: "yardımcı menü üstüne geldiğinde buton büyümeli" */
+        .helper-element:hover {
+            transform: scale(1.15); /* Butonun belirgin şekilde büyümesi */
+            background: linear-gradient(135deg, #6b89c4, #4f46e5); /* Renk değişimi isteğe bağlı, şık durur */
+        }
+
+        .helper-element:active {
+            transform: scale(0.95); /* Tıklayınca küçülme efekti */
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="header-area">
+        <h1>Görev: CSS Position (Lab-Position)</h1><br>
+        <a href="index.html" class="btn-back">Ana Sayfaya Dön</a>
+    </div>
+
+    <!-- Container / Kart Alanı (Relative) -->
+    <div class="card-container">
+        
+        <!-- Etiketler (Absolute Konumlandırmalar) -->
+        <div class="badge badge-free">Ücretsiz</div>
+        <div class="badge badge-date">24 Nisan</div>
+        
+        <!-- Arkada Kalan Görsel Öğe (Z-index kullanımı) -->
+        <div class="circle-bg"></div>
+
+        <!-- Kart İçeriği -->
+        <div class="card-content">
+            <h1>Teknoloji Topluluğu Etkinliği</h1>
+            <p><strong>Teknoloji Topluluğumuz, yazılım, donanım ve yapay zeka alanında yenilikçi projelere imza atmak için bir araya geliyor! Bu büyük bahar buluşmasında sektör liderlerini ve heyecan verici atölye çalışmalarını siz öğrencilerle buluşturuyoruz. Geleceği şekillendiren teknolojiler hakkında bilgi sahibi olmak ve projelerinizi diğer üyelerle paylaşmak için etkinliğimize katılmayı unutmayın.</strong></p>
+            <p><em>Ödev Notu:</em> Bu örnek sayfada amaç; CSS position özelliklerini kullanarak tek bir duyuru kartı üzerinde relative, absolute, fixed, z-index, hover, cursor ve animasyon mantığını birlikte göstermektir. Tasarımda yer alan bileşenler farklı katmanlarda organize edilmiştir.</p>
+        </div>
+
+        <div class="badge badge-location">Konum: Konferans Salonu</div>
+        <div class="badge badge-register">Son Kayıt</div>
+
+    </div>
+
+    <!-- Alt Bilgi (Footer) -->
+    <div class="page-footer">
+        <p>2026 - LAB Position Örnek Çalışması</p>
+    </div>
+
+    <!-- Sabit Yardımcı Menü (Fixed Konumlandırma) -->
+    <div class="helper-element">
+        Yardımcı Menü
+    </div>
+
+</body>
+</html>

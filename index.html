@@ -20,7 +20,7 @@
 
         /* ana container */
         .container {
-            max-width: 900px;
+            max-width: 1050px;
             margin: 0 auto;
             background-color: #ffffff;
             border: 1px solid #d1d5db;
@@ -55,11 +55,15 @@
 
         nav ul {
             list-style-type: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: nowrap;
+            justify-content: flex-end;
         }
 
         nav ul li {
             display: inline-block;
-            margin-left: 5px;
         }
 
         nav ul li a {
@@ -89,6 +93,20 @@
 
         .btn-flexbox:hover {
             background: linear-gradient(135deg, #2563eb, #4f46e5) !important;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+        }
+
+        .btn-position {
+            background: linear-gradient(135deg, #8da4d0, #6b7280);
+            color: white !important;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 6px;
+        }
+
+        .btn-position:hover {
+            background: linear-gradient(135deg, #6b7280, #4b5563) !important;
             transform: translateY(-1px);
             box-shadow: 0 6px 8px rgba(0,0,0,0.15);
         }
@@ -174,6 +192,7 @@
                     <li><a href="interests.html">İlgi Alanlarım</a></li>
                     <li><a href="contact.html">İletişim</a></li>
                     <li><a href="flexbox.html" class="btn-flexbox">Flexbox Uygulaması</a></li>
+                    <li><a href="lab-position.html" class="btn-position">Position Lab</a></li>
                 </ul>
             </nav>
         </header>
