@@ -46,6 +46,8 @@
             justify-content: space-between;
             /* H1 ve Menüyü iki uca ayırır */
             align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
         h1 {
@@ -58,7 +60,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            flex-wrap: nowrap;
+            flex-wrap: wrap;
             justify-content: flex-end;
         }
 
@@ -74,6 +76,7 @@
             border-radius: 4px;
             transition: all 0.3s ease;
             /* Hover için yumuşak geçiş */
+            white-space: nowrap;
         }
 
         /* Hover efekti */
@@ -121,6 +124,20 @@
 
         .btn-nothesaplama:hover {
             background: linear-gradient(135deg, #059669, #047857) !important;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+        }
+
+        .btn-hafta7 {
+            background: linear-gradient(135deg, #a855f7, #9333ea);
+            color: white !important;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 6px;
+        }
+
+        .btn-hafta7:hover {
+            background: linear-gradient(135deg, #9333ea, #7e22ce) !important;
             transform: translateY(-1px);
             box-shadow: 0 6px 8px rgba(0,0,0,0.15);
         }
@@ -191,6 +208,113 @@
             font-size: 13px;
             color: #6b7280;
         }
+        /* Laboratuvar Hero Section */
+        .lab-hero {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+            border: 1px solid #eaeaea;
+        }
+
+        .lab-hero .badge {
+            background-color: #e0e7ff;
+            color: #4f46e5;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .lab-hero h2 {
+            font-size: 32px;
+            color: #111827;
+            margin-bottom: 15px;
+        }
+
+        .lab-hero p {
+            font-size: 15px;
+            color: #6b7280;
+            max-width: 650px;
+            margin: 0 auto 30px auto;
+            line-height: 1.6;
+        }
+
+        .lab-hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary-lab {
+            background-color: #3b82f6;
+            color: white !important;
+            padding: 10px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+        .btn-primary-lab:hover {
+            background-color: #2563eb;
+        }
+        
+        .btn-secondary-lab {
+            background-color: #e5e7eb;
+            color: #374151 !important;
+            padding: 10px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+        .btn-secondary-lab:hover {
+            background-color: #d1d5db;
+        }
+
+        .lab-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .lab-card {
+            background-color: #ffffff;
+            border: 1px solid #f3f4f6;
+            border-radius: 10px;
+            padding: 15px;
+            width: 140px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .lab-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+        }
+
+        .lab-card strong {
+            display: block;
+            font-size: 14px;
+            color: #111827;
+            margin-bottom: 8px;
+        }
+
+        .lab-card span {
+            font-size: 13px;
+            color: #6b7280;
+            display: block;
+            line-height: 1.3;
+        }
     </style>
 </head>
 
@@ -208,11 +332,54 @@
                     <li><a href="flexbox.html" class="btn-flexbox">Flexbox Uygulaması</a></li>
                     <li><a href="lab-position.html" class="btn-position">Position Lab</a></li>
                     <li><a href="nothesaplama.html" class="btn-nothesaplama">Not Hesaplama</a></li>
+                    <li><a href="hafta7.html" class="btn-hafta7">Hafta 7 (Bootstrap)</a></li>
                 </ul>
             </nav>
         </header>
 
         <main>
+            <section class="lab-hero">
+                <span class="badge">Web Programlama Dersi</span>
+                <h2>Laboratuvar Ana Sayfası</h2>
+                <p>Bu sayfa GitHub Pages üzerinde yayınlanan laboratuvar uygulamalarına giriş için hazırlanmıştır. Aşağıdaki butondan hafta 7 uygulamasına geçebilirsiniz.</p>
+                
+                <div class="lab-hero-buttons">
+                    <a href="hafta7.html" class="btn-primary-lab">Hafta 7 Uygulamasına Git</a>
+                    <a href="#" class="btn-secondary-lab">Diğer Haftalar</a>
+                </div>
+
+                <div class="lab-grid">
+                    <div class="lab-card">
+                        <strong>Hafta 1</strong>
+                        <span>GitHub Pages</span>
+                    </div>
+                    <div class="lab-card">
+                        <strong>Hafta 2</strong>
+                        <span>HTML + CSS</span>
+                    </div>
+                    <div class="lab-card">
+                        <strong>Hafta 3</strong>
+                        <span>Form Yapıları</span>
+                    </div>
+                    <div class="lab-card">
+                        <strong>Hafta 4</strong>
+                        <span>Flexbox</span>
+                    </div>
+                    <div class="lab-card">
+                        <strong>Hafta 5</strong>
+                        <span>Position</span>
+                    </div>
+                    <div class="lab-card">
+                        <strong>Hafta 6</strong>
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="lab-card">
+                        <strong>Hafta 7</strong>
+                        <span>Bootstrap +<br>JavaScript</span>
+                    </div>
+                </div>
+            </section>
+
             <p class="intro-text">Bu web sitesi, projelerimi, akademik çalışmalarımı ve yazılım dünyasındaki hedeflerimi
                 paylaştığım <strong>kişisel tanıtım sayfamdır</strong>. Bilgisayar mühendisliği eğitimim boyunca hem
                 donanım hem de yazılım tarafında edindiğim tecrübeleri burada derliyorum.</p>

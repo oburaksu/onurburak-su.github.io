@@ -1,0 +1,87 @@
+/* Hafta 7 özel düzeltmeler ve Dark Mode (Koyu Tema) stilleri */
+
+/* Genel geçiş efekti (Theme değişikliği için) */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+    background-color: #f8f9fa;
+}
+
+/* Navbar */
+.navbar-brand {
+    font-weight: bold;
+}
+
+/* Hero Section */
+.hero-section {
+    background-color: #ffffff;
+    border-radius: 8px;
+}
+
+/* Neden Katılmalısınız Kartları */
+.bg-light-blue { background-color: #dbeafe; }
+.bg-light-green { background-color: #dcfce7; }
+.bg-light-yellow { background-color: #fef9c3; }
+.bg-light-cyan { background-color: #cffafe; }
+
+/* Koyu tema sınıfı JavaScript'te classList.toggle ile body'e atılacak */
+body.dark-mode {
+    background-color: #121212 !important;
+    color: #e0e0e0 !important;
+}
+
+/* Koyu temadaki kartların stili */
+body.dark-mode .card,
+body.dark-mode .hero-section,
+body.dark-mode .bg-white {
+    background-color: #1e1e1e !important;
+    border-color: #333;
+    color: #e0e0e0;
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6 {
+    color: #ffffff !important;
+}
+
+body.dark-mode .text-dark {
+    color: #f8f9fa !important;
+}
+
+body.dark-mode .text-muted,
+body.dark-mode .text-secondary {
+    color: #a0a0a0 !important;
+}
+
+body.dark-mode .bg-light {
+    background-color: #2c2c2c !important;
+}
+
+/* Koyu temada form elemanları */
+body.dark-mode .form-control,
+body.dark-mode .form-select {
+    background-color: #333;
+    color: #f1f1f1;
+    border-color: #555;
+}
+
+body.dark-mode .form-control:focus,
+body.dark-mode .form-select:focus {
+    background-color: #444;
+    color: #fff;
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+body.dark-mode .navbar {
+    border-bottom: 1px solid #333;
+}
+
+/* Neden Katılmalısınız koyu tema adaptasyonu (hafif saydamlık) */
+body.dark-mode .bg-light-blue { background-color: rgba(59, 130, 246, 0.2); }
+body.dark-mode .bg-light-green { background-color: rgba(34, 197, 94, 0.2); }
+body.dark-mode .bg-light-yellow { background-color: rgba(234, 179, 8, 0.2); }
+body.dark-mode .bg-light-cyan { background-color: rgba(6, 182, 212, 0.2); }
